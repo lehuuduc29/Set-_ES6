@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        border: 2px solid black;
+        width: 100px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <input type="text" id="content" placeholder="nhap ten can them">
+    <button type="button" onclick="Show()">Add</button>
+    <br><br>
+    <input type="text" id="content-del" placeholder="nhap ten can xoa">
+    <button type="button" onclick="Del()">Delete</button>
+    <br> <br>
+    <div id="land"></div>
+</body>
+<script>
+    let arr = [];
+   
+    let data = new Set();
+    let name = document.getElementById("content");
+    let name_del = document.getElementById("content-del");
+
+    function Show() {
+
+        if (name.value != '') {
+            data.add(name.value);
+            console.log(data);
+            arr = [...data];
+            console.log(arr);
+           
+            document.getElementById("land").innerHTML = arr.join('</br><hr>');
+            name.value = '';
+        } else {
+            alert('nhập lại tên');
+        }
+
+
+    }
+
+    function Del() {
+        if (data.has(name_del.value)) {
+            console.log(name_del.value);
+            data.delete(name_del.value);
+            console.log(data);
+            arr = [...data];
+            console.log(arr);
+          
+            document.getElementById("land").innerHTML = arr.join('</br>');
+            name_del.value = '';
+        } else {
+            alert('nhập lại tên');
+        }
+
+    };
+
+</script>
+
+</html>
